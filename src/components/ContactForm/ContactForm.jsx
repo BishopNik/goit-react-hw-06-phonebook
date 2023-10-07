@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
-import toastWindow from './toastwindow.js';
+import toastWindow from '../Helpers/toastwindow.js';
 import * as yup from 'yup';
-import './style.css';
-import 'react-toastify/dist/ReactToastify.css';
+import { FormContact, Label, InputField, AddButton } from './ContactForm.styled.jsx';
 
 function ContactForm({ onSubmitForm }) {
 	const [name, setName] = useState('');
@@ -52,11 +50,10 @@ function ContactForm({ onSubmitForm }) {
 
 	return (
 		<>
-			<form className='form-contact' onSubmit={handleSubmit}>
-				<label className='label'>
+			<FormContact onSubmit={handleSubmit}>
+				<Label>
 					Name
-					<input
-						className='input-field'
+					<InputField
 						value={name}
 						type='text'
 						name='name'
@@ -66,11 +63,10 @@ function ContactForm({ onSubmitForm }) {
 						autoComplete='off'
 						onChange={handlerOnChange}
 					/>
-				</label>
-				<label className='label'>
+				</Label>
+				<Label>
 					Number
-					<input
-						className='input-field'
+					<InputField
 						value={number}
 						type='tel'
 						name='number'
@@ -80,12 +76,11 @@ function ContactForm({ onSubmitForm }) {
 						autoComplete='off'
 						onChange={handlerOnChange}
 					/>
-				</label>
-				<button className='add-contact button' type='submit' onClick={handleClick}>
+				</Label>
+				<AddButton type='submit' onClick={handleClick}>
 					Add contact
-				</button>
-			</form>
-			<ToastContainer position='top-right' autoClose={5000} hideProgressBar={false} />
+				</AddButton>
+			</FormContact>
 		</>
 	);
 }

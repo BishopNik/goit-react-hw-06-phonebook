@@ -1,25 +1,20 @@
 /** @format */
 
 import PropTypes from 'prop-types';
-import './style.css';
+import { ContactContainer, Contact, DelDutton } from './ContactList.styled';
 
 function ContactList({ contacts, onDeleteContact }) {
 	return (
 		<>
 			{contacts.map(({ id, name, number }) => (
-				<div className='contact-containet' key={id}>
-					<p className='contact'>
+				<ContactContainer key={id}>
+					<Contact>
 						{name} {number}
-					</p>
-					<button
-						id={id}
-						className='del-button button'
-						type='submit'
-						onClick={onDeleteContact}
-					>
+					</Contact>
+					<DelDutton id={id} type='submit' onClick={onDeleteContact}>
 						Delete
-					</button>
-				</div>
+					</DelDutton>
+				</ContactContainer>
 			))}
 		</>
 	);

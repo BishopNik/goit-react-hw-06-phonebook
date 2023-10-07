@@ -1,21 +1,20 @@
 /** @format */
 
 import PropTypes from 'prop-types';
-import './style.css';
+import { FilterField, InputFilter } from './Filter.styled';
 
 function Filter({ value, onFiltred }) {
 	return (
-		<label className='filter-field'>
+		<FilterField>
 			Find contacts by name
-			<input
-				className='input-field filter'
+			<InputFilter
 				value={value}
 				type='text'
 				name='filter'
 				autoComplete='off'
 				onChange={onFiltred}
 			/>
-		</label>
+		</FilterField>
 	);
 }
 

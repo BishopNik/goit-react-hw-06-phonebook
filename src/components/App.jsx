@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { nanoid } from 'nanoid';
-import Filter from './filter';
-import ContactList from './contactlist';
-import ContactForm from './contactform';
-import toastWindow from './toastwindow.js';
-import './style.css';
+import Filter from './Filter';
+import ContactList from './ContactList';
+import ContactForm from './ContactForm';
+import toastWindow from './Helpers/toastwindow.js';
+import { Container, TitleName } from './App.styled';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DEFAULTCONTACTS = [
 	{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -66,19 +67,19 @@ function App() {
 	};
 
 	return (
-		<div className='container'>
-			<h1 className='title-name'>Phonebook</h1>
+		<Container>
+			<TitleName>Phonebook</TitleName>
 
 			<ContactForm onSubmitForm={handleAddContact} />
 
-			<h2 className='title-name'>Contacts</h2>
+			<TitleName>Contacts</TitleName>
 
 			<Filter onFiltred={handlerOnFitred} value={filter} />
 
 			<ContactList contacts={filteredContacts} onDeleteContact={handleDelClick} />
 
 			<ToastContainer position='top-right' autoClose={5000} hideProgressBar={false} />
-		</div>
+		</Container>
 	);
 }
 
