@@ -1,7 +1,10 @@
 /** @format */
 
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
+import { contactsState } from '../../redux/selectors';
+import { addContact } from '../../redux/contactsSlice';
 import { toastWindow } from '../Helpers';
 import * as yup from 'yup';
 import { FormContact, Label, InputField, AddButton } from './ContactForm.styled.jsx';
@@ -9,6 +12,8 @@ import { FormContact, Label, InputField, AddButton } from './ContactForm.styled.
 function ContactForm({ onSubmitForm }) {
 	const [name, setName] = useState('');
 	const [number, setNumber] = useState('');
+	const dispatch = useDispatch();
+	const contacts = useSelector(contactsState);
 
 	const schema = yup.object({
 		name: yup.string().min(2).required('Name is required'),
@@ -33,13 +38,27 @@ function ContactForm({ onSubmitForm }) {
 		setTimeout(() => (target.style.scale = '1'), 80);
 	};
 
+	const handleAddContact = ({ name, number }) => {
+		const checkName = contacts.find(
+			contact => contact.name.toLowerCase() === name.toLowerCase()
+		);
+		if (checkName) {
+			toastWindow(`${checkName.name} is already in contacts.`);
+			return { name, number };
+		}
+
+		dispatch(addContact({ id: nanoid(), name, number }));
+
+		return { name: '', number: '' };
+	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		schema
 			.validate({ name, number })
 			.then(() => {
-				const res = onSubmitForm({ name, number });
+				const res = handleAddContact({ name, number });
 				setName(res.name);
 				setNumber(res.number);
 			})
@@ -84,9 +103,5 @@ function ContactForm({ onSubmitForm }) {
 		</>
 	);
 }
-
-ContactForm.propTypes = {
-	onSubmitForm: PropTypes.func.isRequired,
-};
 
 export default ContactForm;
