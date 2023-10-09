@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import toastWindow from '../Helpers/toastwindow.js';
+import { toastWindow } from '../Helpers';
 import * as yup from 'yup';
 import { FormContact, Label, InputField, AddButton } from './ContactForm.styled.jsx';
 

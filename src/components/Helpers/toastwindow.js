@@ -2,7 +2,7 @@
 
 import { toast } from 'react-toastify';
 
-function toastWindow(mes) {
+export function toastWindow(mes) {
 	toast.error(mes, {
 		position: 'top-right',
 		autoClose: 5000,
@@ -14,5 +14,3 @@ function toastWindow(mes) {
 		theme: 'colored',
 	});
 }
-
-export default toastWindow;

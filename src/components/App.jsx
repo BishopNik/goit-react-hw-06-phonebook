@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import Filter from './Filter';
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
-import toastWindow from './Helpers/toastwindow.js';
+import { toastWindow } from './Helpers';
 import { Container, TitleName } from './App.styled';
 import 'react-toastify/dist/ReactToastify.css';
 
