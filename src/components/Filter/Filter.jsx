@@ -1,6 +1,5 @@
 /** @format */
 
-import PropTypes from 'prop-types';
 import { FilterField, InputFilter } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterState } from '../../redux/selectors';
@@ -22,10 +21,5 @@ function Filter() {
 		</FilterField>
 	);
 }
-
-Filter.propTypes = {
-	value: PropTypes.string.isRequired,
-	onFiltred: PropTypes.func.isRequired,
-};
 
 export default Filter;
