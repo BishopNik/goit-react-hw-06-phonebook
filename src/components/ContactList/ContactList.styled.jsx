@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const ContactContainer = styled.div`
 	display: flex;
 	align-items: center;
-	padding: 5px 30px;
+	padding: ${p => p.theme.spacing(1)} 30px;
 	outline: 1px solid lightgray;
 	margin-bottom: 5px;
 `;
@@ -13,14 +13,14 @@ export const ContactContainer = styled.div`
 export const Contact = styled.p`
 	margin: 0;
 	margin-right: auto;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: ${p => p.theme.spacing(3)};
+	padding-bottom: ${p => p.theme.spacing(3)};
 	font-size: 24px;
 	color: darkblue;
 `;
 
 export const DelDutton = styled.button`
-	border-radius: 6px;
+	border-radius: ${p => p.theme.spacing(2)};
 	font-size: 22px;
 	border: 1px solid rgba(0, 0, 0, 0.7);
 	cursor: pointer;

@@ -6,7 +6,7 @@ export const FormContact = styled.form`
 	box-sizing: border-box;
 	padding: 40px 55px;
 	border: 1px solid rgba(0, 0, 0, 0.7);
-	border-radius: 12px;
+	border-radius: ${p => p.theme.spacing(4)};
 	box-shadow: 0px 0px 8px 4px rgba(128, 128, 128, 0.5);
 `;
 
@@ -15,7 +15,7 @@ export const Label = styled.label`
 	flex-direction: column;
 	gap: 15px;
 	margin-right: auto;
-	margin-bottom: 35px;
+	margin-bottom: ${p => p.theme.spacing(9)};
 	width: 90%;
 	font-size: 24px;
 	font-weight: 600;
@@ -23,7 +23,7 @@ export const Label = styled.label`
 
 export const InputField = styled.input`
 	padding: 10px 25px;
-	border-radius: 4px;
+	border-radius: ${p => p.theme.spacing(1)};
 	border: none;
 	outline: 2px solid lightgray;
 	font-size: 24px;

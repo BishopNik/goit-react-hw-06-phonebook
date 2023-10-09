@@ -1,7 +1,6 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { newContacts, afterDelContacts } from './actions';
 
 const initialState = {
 	array: [
@@ -17,10 +16,10 @@ export const contactsSlice = createSlice({
 	initialState,
 	reducers: {
 		addContact: (state, action) => {
-			state.array = newContacts(state.array, action.payload);
+			state.array.push(action.payload);
 		},
 		delContact: (state, action) => {
-			state.array = afterDelContacts(state.array, action.payload);
+			state.array = state.array.filter(contact => contact.id !== action.payload);
 		},
 	},
 });

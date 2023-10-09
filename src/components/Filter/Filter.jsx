@@ -2,17 +2,22 @@
 
 import PropTypes from 'prop-types';
 import { FilterField, InputFilter } from './Filter.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterState } from '../../redux/selectors';
+import { changeFilter } from '../../redux/filterSlice';
 
-function Filter({ value, onFiltred }) {
+function Filter() {
+	const dispatch = useDispatch();
+	const filterValue = useSelector(filterState);
 	return (
 		<FilterField>
 			Find contacts by name
 			<InputFilter
-				value={value}
+				value={filterValue}
 				type='text'
 				name='filter'
 				autoComplete='off'
-				onChange={onFiltred}
+				onChange={({ target }) => dispatch(changeFilter(target.value))}
 			/>
 		</FilterField>
 	);

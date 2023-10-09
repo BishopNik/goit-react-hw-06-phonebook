@@ -14,7 +14,7 @@ export const FilterField = styled.label`
 
 export const InputFilter = styled.input`
 	padding: 10px 25px;
-	border-radius: 4px;
+	border-radius: ${p => p.theme.spacing(1)};
 	border: none;
 	outline: 2px solid lightgray;
 	font-size: 24px;
