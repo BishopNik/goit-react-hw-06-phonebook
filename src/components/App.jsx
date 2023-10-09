@@ -9,17 +9,12 @@ import ContactForm from './ContactForm';
 import { toastWindow } from './Helpers';
 import { Container, TitleName } from './App.styled';
 import 'react-toastify/dist/ReactToastify.css';
-import { filterState, contactsState } from '../redux/selectors';
-import { addContact, delContact } from '../redux/contactsSlice';
+import { contactsState } from '../redux/selectors';
+import { addContact } from '../redux/contactsSlice';
 
 function App() {
 	const dispatch = useDispatch();
-	const filterValue = useSelector(filterState);
 	const contacts = useSelector(contactsState);
-
-	const filteredContacts = contacts.filter(contact =>
-		contact.name.toLowerCase().includes(filterValue?.toLowerCase())
-	);
 
 	const handleAddContact = ({ name, number }) => {
 		const checkName = contacts.find(
@@ -35,10 +30,6 @@ function App() {
 		return { name: '', number: '' };
 	};
 
-	const handleDelClick = ({ target }) => {
-		dispatch(delContact(target.id));
-	};
-
 	return (
 		<Container>
 			<TitleName>Phonebook</TitleName>
@@ -49,7 +40,7 @@ function App() {
 
 			<Filter />
 
-			<ContactList contacts={filteredContacts} onDeleteContact={handleDelClick} />
+			<ContactList />
 
 			<ToastContainer position='top-right' autoClose={5000} hideProgressBar={false} />
 		</Container>
