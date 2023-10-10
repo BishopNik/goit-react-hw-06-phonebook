@@ -1,8 +1,9 @@
 /** @format */
 
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 
-export const FormContact = styled.form`
+export const FormikContact = styled(Form)`
 	box-sizing: border-box;
 	padding: 40px 55px;
 	border: 1px solid rgba(0, 0, 0, 0.7);
@@ -21,7 +22,7 @@ export const Label = styled.label`
 	font-weight: 600;
 `;
 
-export const InputField = styled.input`
+export const InputFormik = styled(Field)`
 	padding: 10px 25px;
 	border-radius: ${p => p.theme.spacing(1)};
 	border: none;
