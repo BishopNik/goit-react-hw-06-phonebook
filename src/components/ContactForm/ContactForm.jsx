@@ -3,8 +3,8 @@
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import { contactsState } from '../../redux/selectors';
-import { addContact } from '../../redux/contactsSlice';
+import { contactsState } from 'redux/selectors';
+import { addContact } from 'redux/contactsSlice';
 import { toastWindow } from '../Helpers';
 import * as yup from 'yup';
 import { Label, FormikContact, InputFormik, AddButton } from './ContactForm.styled.jsx';
